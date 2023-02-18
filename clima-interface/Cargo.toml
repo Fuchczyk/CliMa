@@ -1,0 +1,19 @@
+[package]
+name = "clima-interface"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[profile.debug2]
+inherits = "dev"
+
+[dependencies]
+dioxus = "0.3.1"
+dioxus-router = "0.3.0"
+dioxus-web = "0.3.0"
+
+clima-types = {path = "../clima-types/"}
+
+fluent = "0.16.0"
+gloo-net = {version="0.2.6", features = ["http", "json"]}
