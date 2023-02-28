@@ -1,4 +1,5 @@
 target
 clima-core/clima.sqlite
+clima-interface/dist
 kody.csv
 kody.ods

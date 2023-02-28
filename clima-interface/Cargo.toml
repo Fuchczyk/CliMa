@@ -5,15 +5,10 @@ edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
-[profile.debug2]
-inherits = "dev"
-
 [dependencies]
-dioxus = "0.3.1"
-dioxus-router = "0.3.0"
-dioxus-web = "0.3.0"
-
 clima-types = {path = "../clima-types/"}
-
-fluent = "0.16.0"
-gloo-net = {version="0.2.6", features = ["http", "json"]}
+gloo-net = "0.2.6"
+log = "0.4.17"
+sycamore = { version = "0.8.2", features = ["futures", "sycamore-futures", "suspense"] }
+sycamore-router = "0.8.0"
+wasm-logger = "0.2.0"

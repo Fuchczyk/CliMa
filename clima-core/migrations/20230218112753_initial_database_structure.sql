@@ -30,13 +30,19 @@ CREATE TABLE postcode_mapping (
 
 CREATE TABLE assortment (
   id INTEGER PRIMARY KEY,
-  name TEXT UNIQUE
+  name TEXT UNIQUE NOT NULL
 );
+
+INSERT INTO assortment (name) VALUES ('Miał');
+INSERT INTO assortment (name) VALUES ('Orzech');
+INSERT INTO assortment (name) VALUES ('Kostka');
+INSERT INTO assortment (name) VALUES ('Ekogroszek');
+INSERT INTO assortment (name) VALUES ('Groszek');
 
 CREATE TABLE client_assortment (
   client_id INTEGER NOT NULL,
   assortment_id INTEGER NOT NULL,
-  FOREIGN KEY client_id REFERENCES client(id),
-  FOREIGN KEY assortment_id REFERENCES assortment(id)
+  FOREIGN KEY (client_id) REFERENCES client(id),
+  FOREIGN KEY (assortment_id) REFERENCES assortment(id)
 );
 
