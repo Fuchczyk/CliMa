@@ -1,7 +1,6 @@
 [workspace]
 
 members = [
-  "clima-interface",
   "clima-core",
   "clima-types"
 ]

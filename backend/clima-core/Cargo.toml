@@ -8,6 +8,8 @@ edition = "2021"
 [dependencies]
 tokio = {version="1.25.0", features = ["full"]}
 sqlx = {version="0.6.2", features = ["sqlite", "migrate", "chrono", "macros", "runtime-tokio-rustls"]}
+serde = "1.0.152"
+serde_json = "1.0.93"
 axum = "0.6.7"
 dotenvy = "0.15.6"
 tracing = "0.1.37"

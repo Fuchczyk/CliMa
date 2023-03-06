@@ -24,7 +24,11 @@ async fn get_assortment(State(db): State<SqlitePool>) -> impl IntoResponse {
         Ok(result) => {
             let options: Vec<String> = result.into_iter().map(|record| record.name).collect();
 
-            (StatusCode::OK, Json(options)).into_response()
+            (
+                StatusCode::OK,
+                Json(serde_json::json!({ "assortment": options })),
+            )
+                .into_response()
         }
     }
 }
