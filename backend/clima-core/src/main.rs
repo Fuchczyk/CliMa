@@ -24,6 +24,11 @@ async fn get_assortment(State(db): State<SqlitePool>) -> impl IntoResponse {
         Ok(result) => {
             let options: Vec<String> = result.into_iter().map(|record| record.name).collect();
 
+            println!(
+                "Returning {:?}",
+                serde_json::json!({ "assortment": options }).to_string()
+            );
+
             (
                 StatusCode::OK,
                 Json(serde_json::json!({ "assortment": options })),
@@ -38,7 +43,7 @@ async fn main() {
     dotenvy::dotenv().unwrap();
 
     let database_pool = sqlx::sqlite::SqlitePool::connect(
-        "sqlite:/home/fuchczyk/Programming/clima/clima-core/clima.sqlite",
+        "sqlite:/home/fuchczyk/Programming/clima/backend/clima-core/clima.sqlite",
     )
     .await
     .unwrap();
@@ -48,7 +53,7 @@ async fn main() {
         .with_state(database_pool)
         .layer(tower_http::cors::CorsLayer::very_permissive());
 
-    let addr = std::net::SocketAddr::from(([127, 0, 0, 1], 39632));
+    let addr = std::net::SocketAddr::from(([127, 0, 0, 1], 42173));
 
     axum::Server::bind(&addr)
         .serve(main_router.into_make_service())

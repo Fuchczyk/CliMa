@@ -7,15 +7,26 @@ interface AssortmentType {
 }
 
 export async function getServerSideProps(context) {
-  const assortment_response = await fetch("http://127.0.0.1:42173/assortment");
+  const assortment_response = await fetch("http://127.0.0.1:42173/assortment", {
+    method: "GET"
+  });
+
+  const return_val: AssortmentType = await assortment_response.json();
+
+  console.log("RESPONSE " + return_val.assortment);
+  return {
+    props: {
+      server_data: return_val
+    }
+  };
 }
 
-export default function Client() {
+export default function Client({ server_data }: { server_data: AssortmentType }) {
   //const client_options: Array<[string, string]> = [];
   //??client_options.push(["Informacje ogólne", "/client"]);
   //client_options.push()
   const client_options: Array<[string, string]> = [["Informacje ogólne", "/client"], ["Wyszukaj klienta", "/client/search"], ["Dodaj klienta", "/client/add"]];
-  let state = new FormState(["a", "bde"]);
+  let state = new FormState(server_data.assortment);
 
   return (
     <>

@@ -91,6 +91,8 @@ export function FormPage({ state }: { state: FormState }) {
       id: state.id
     };
 
+    console.log("BODY: " + JSON.stringify(form_data));
+
     try {
       const response = await fetch("http://127.0.0.1:42173/client", {
         method: "POST",
